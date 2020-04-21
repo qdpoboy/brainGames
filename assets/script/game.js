@@ -67,8 +67,8 @@ cc.Class({
             let randIndex = Math.floor(Math.random() * randArr.length);
             let cardNode = cc.instantiate(this.cardPrefab);
             cardNode.getComponent('card').randCard(randArr[randIndex]);
-            //适配宽度小于600的屏幕
-            if (cc.winSize.width < 600) {
+            //适配宽度小的屏幕
+            if (cc.winSize.width <= 848) {
                 cardNode.width = 68;
             }
             //为了让card.js可调用，game.js的方法
