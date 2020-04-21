@@ -38,6 +38,5 @@
   },
   "use-customize-simulator": true,
   "use-project-simulator-setting": false,
-  "migrate-history": [],
-  "start-scene": "current"
+  "migrate-history": []
 }

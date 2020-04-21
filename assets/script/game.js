@@ -57,7 +57,11 @@ cc.Class({
             let randIndex = Math.floor(Math.random() * randArr.length);
             let cardNode = cc.instantiate(this.cardPrefab);
             cardNode.getComponent('card').randCard(randArr[randIndex]);
-            //为来让card.js可调用，game.js的方法
+            //适配宽度小于600的屏幕
+            if (cc.winSize.width < 600) {
+                cardNode.width = 68;
+            }
+            //为了让card.js可调用，game.js的方法
             cardNode.getComponent('card').game = this;
             randArr.splice(randIndex, 1);
             this.ctrlArea.addChild(cardNode);
@@ -74,6 +78,12 @@ cc.Class({
     },
 
     gameWin: function() {
+        //本地存储，总分记录
+        cc.sys.localStorage.setItem('totalScore', totalScore);
+        //读取本地存储
+        //cc.sys.localStorage.getItem(key);
+        //删除本地存储
+        //cc.sys.localStorage.removeItem(key);
         this.singleScore = 0;
         this.scoreLabel.string = '得分: 0';
         if (confirm('重新开始一局？')) {
