@@ -23,6 +23,10 @@ cc.Class({
         scoreLabel: {
             default: null,
             type: cc.Label
+        },
+        totalScoreLabel: {
+            default: null,
+            type: cc.Label
         }
     },
 
@@ -42,7 +46,13 @@ cc.Class({
         //单场得分
         this.singleScore = 0;
         //总得分
-        this.totalScore = 0;
+        let localTotalScore = cc.sys.localStorage.getItem('totalScore');
+        if (localTotalScore) {
+            this.totalScore = parseInt(localTotalScore);
+        } else {
+            this.totalScore = 0;
+        }
+        this.totalScoreLabel.string = '总得分: ' + this.totalScore;
         this.initMap();
     },
 
@@ -68,25 +78,26 @@ cc.Class({
         }
     },
 
-    gainScore: function() {
+    //两张牌相同，消除得分
+    gainScore: function () {
         this.singleScore += 1;
-        this.totalScore += 1;
         //更新得分
-        this.scoreLabel.string = '得分: ' + this.totalScore;
+        this.scoreLabel.string = '本场得分: ' + this.singleScore;
         //播放得分音效
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
-    gameWin: function() {
+    //本场游戏获胜
+    gameWin: function () {
+        this.totalScore += this.singleScore;
+        this.totalScoreLabel.string = '总得分: ' + this.totalScore;
         //本地存储，总分记录
-        cc.sys.localStorage.setItem('totalScore', totalScore);
-        //读取本地存储
-        //cc.sys.localStorage.getItem(key);
+        cc.sys.localStorage.setItem('totalScore', this.totalScore);
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
-        this.singleScore = 0;
-        this.scoreLabel.string = '得分: 0';
         if (confirm('重新开始一局？')) {
+            this.singleScore = 0;
+            this.scoreLabel.string = '得分: 0';
             this.ctrlArea.destroyAllChildren();
             this.init();
         } else {
@@ -94,13 +105,13 @@ cc.Class({
         }
     },
 
-    gameLost: function() {
-        
+    gameLost: function () {
+
     },
 
     // start () {},
 
-    update (dt) {
+    update(dt) {
         if (this.singleScore == 18) {
             this.gameWin();
         }
