@@ -41,7 +41,6 @@ cc.Class({
             this.back = false;
             if (previousSelection) {
                 if (previousSelection.cardIndex == this.cardIndex) {
-                    console.log('相同了，消除!');
                     cardClick = false;
                     this.scheduleOnce(function() {
                         this.returnOk();
@@ -68,6 +67,8 @@ cc.Class({
 
 
     returnBack: function() {
+        //执行减分
+        this.game.loseScore();
         previousSelection.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame('card_back');
         previousSelection.back = true;
         //this.filpAnimation(this);
@@ -78,7 +79,8 @@ cc.Class({
     },
 
     returnOk: function() {
-        this.game.gainScore();
+        ////执行加分
+        //this.game.gainScore();
         //this.filpAnimation(previousSelection);
         //解除绑定事件
         previousSelection.cardSprite.node.off(cc.Node.EventType.TOUCH_START, previousSelection.flip, previousSelection);

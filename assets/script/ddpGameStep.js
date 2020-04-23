@@ -12,7 +12,11 @@ cc.Class({
         step1: {
             default: null,
             type: cc.Sprite
-        }
+        },
+        backBtn: {
+            default: null,
+            type: cc.Sprite
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -20,6 +24,9 @@ cc.Class({
     onLoad () {
         this.step1.node.on(cc.Node.EventType.TOUCH_START, function() {
             cc.director.loadScene('ddpGame');
+        }, this);
+        this.backBtn.node.on(cc.Node.EventType.TOUCH_START, function() {
+            cc.director.loadScene('gameList');
         }, this);
     },
 

@@ -12,7 +12,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        cardPrefab: {
+        cardPrefab1: {
+            default: null,
+            type: cc.Prefab
+        },
+        cardPrefab2: {
             default: null,
             type: cc.Prefab
         },
@@ -24,15 +28,18 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        totalScoreLabel: {
+        backBtn: {
             default: null,
-            type: cc.Label
-        }
+            type: cc.Sprite
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        this.backBtn.node.on(cc.Node.EventType.TOUCH_START, function () {
+            cc.director.loadScene('ddpGameStep');
+        }, this);
         this.init();
     },
 
@@ -43,8 +50,10 @@ cc.Class({
         window.previousSelection = null;
         //游戏难度等级
         this.level = 6;
+        //初始得分
+        this.initScore = 100;
         //单场得分
-        this.singleScore = 0;
+        this.singleScore = 100;
         //总得分
         let localTotalScore = cc.sys.localStorage.getItem('totalScore');
         if (localTotalScore) {
@@ -52,7 +61,6 @@ cc.Class({
         } else {
             this.totalScore = 0;
         }
-        this.totalScoreLabel.string = '总得分: ' + this.totalScore;
         this.initMap();
     },
 
@@ -65,12 +73,14 @@ cc.Class({
         let randArr = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6];
         for (let i = 0; i < ballCnt; i++) {
             let randIndex = Math.floor(Math.random() * randArr.length);
-            let cardNode = cc.instantiate(this.cardPrefab);
-            cardNode.getComponent('card').randCard(randArr[randIndex]);
             //适配宽度小的屏幕
-            if (cc.winSize.width <= 848) {
-                cardNode.width = 68;
+            if (cc.winSize.width <= 600) {
+                var cardNode = cc.instantiate(this.cardPrefab1);
+                // cardNode.width = 68;
+            } else {
+                var cardNode = cc.instantiate(this.cardPrefab2);
             }
+            cardNode.getComponent('card').randCard(randArr[randIndex]);
             //为了让card.js可调用，game.js的方法
             cardNode.getComponent('card').game = this;
             randArr.splice(randIndex, 1);
@@ -78,11 +88,24 @@ cc.Class({
         }
     },
 
-    //两张牌相同，消除得分
+    //两张牌相同，加分
     gainScore: function () {
         this.singleScore += 1;
         //更新得分
-        this.scoreLabel.string = '本场得分: ' + this.singleScore;
+        this.scoreLabel.string = '' + this.singleScore;
+        //播放得分音效
+        //cc.audioEngine.playEffect(this.scoreAudio, false);
+    },
+
+    //两张牌不相同，减分分
+    loseScore: function () {
+        if (this.singleScore <= 0) {
+            this.singleScore = 0;
+        } else {
+            this.singleScore -= 1;
+        }
+        //更新得分
+        this.scoreLabel.string = '' + this.singleScore;
         //播放得分音效
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
@@ -90,14 +113,13 @@ cc.Class({
     //本场游戏获胜
     gameWin: function () {
         this.totalScore += this.singleScore;
-        this.totalScoreLabel.string = '总得分: ' + this.totalScore;
         //本地存储，总分记录
         cc.sys.localStorage.setItem('totalScore', this.totalScore);
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
         if (confirm('重新开始一局？')) {
-            this.singleScore = 0;
-            this.scoreLabel.string = '得分: 0';
+            this.singleScore = this.initScore;
+            this.scoreLabel.string = '' + this.initScore;
             this.ctrlArea.destroyAllChildren();
             this.init();
         } else {

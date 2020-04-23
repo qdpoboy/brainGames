@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "card",
+    "_name": "card2",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -43,7 +43,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 90,
-      "height": 121
+      "height": 120
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -118,7 +118,7 @@
     },
     "_enabled": true,
     "cardAtlas": {
-      "__uuid__": "8d6199c6-2f03-48a4-81fa-1d72a5686539"
+      "__uuid__": "01919d51-2d4a-4b52-a2bd-3832ad1042b0"
     },
     "cardSprite": {
       "__id__": 2
@@ -158,7 +158,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "0c16b1cf-5d39-4689-ad76-0a61a2c90cc2"
+      "__uuid__": "102b83a4-1c6e-4001-a1e8-bdc0daee4e24"
     },
     "fileId": "30A8htL/VBYZCcHxkgyGzJ",
     "sync": false
