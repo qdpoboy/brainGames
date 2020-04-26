@@ -1,33 +1,45 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        step1: {
-            default: null,
-            type: cc.Sprite
-        },
         backBtn: {
             default: null,
             type: cc.Sprite
+        },
+        ddpStepPrefab: {
+            default: null,
+            type: cc.Prefab
+        },
+        stepLayout: {
+            default: null,
+            type: cc.Node
         },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        this.step1.node.on(cc.Node.EventType.TOUCH_START, function() {
-            cc.director.loadScene('ddpGame');
-        }, this);
+        this.init();
+    },
+
+    init: function() {
         this.backBtn.node.on(cc.Node.EventType.TOUCH_START, function() {
             cc.director.loadScene('gameList');
         }, this);
+        this.initSteps();
+    },
+
+    //初始化所有关卡
+    initSteps: function() {
+        let stepArr = [1, 2, 3, 4, 5, 6];
+        for (let i = 0; i < stepArr.length; i++) {
+            let stepNode = cc.instantiate(this.ddpStepPrefab);
+            console.log(stepArr[i]);
+            stepNode.getComponent('ddpStep').initStepShowData(stepArr[i], 0);
+            //为了让ddpCard.js可调用ddpGame.js的方法
+            // cardNode.getComponent('ddpCard').game = this;
+            this.stepLayout.addChild(stepNode);
+        }
     },
 
     start () {

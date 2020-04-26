@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -80,9 +70,9 @@ cc.Class({
             } else {
                 var cardNode = cc.instantiate(this.cardPrefab2);
             }
-            cardNode.getComponent('card').randCard(randArr[randIndex]);
-            //为了让card.js可调用，game.js的方法
-            cardNode.getComponent('card').game = this;
+            cardNode.getComponent('ddpCard').randCard(randArr[randIndex]);
+            //为了让ddpCard.js可调用ddpGame.js的方法
+            cardNode.getComponent('ddpCard').game = this;
             randArr.splice(randIndex, 1);
             this.ctrlArea.addChild(cardNode);
         }
