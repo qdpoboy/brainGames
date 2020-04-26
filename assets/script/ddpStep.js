@@ -14,13 +14,16 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-        // this.onDestroy.on();
+    onLoad() {
+        this.node.on(cc.Node.EventType.TOUCH_START, function () {
+            cc.director.loadScene('ddpGame');
+        }, this);
     },
 
-    start () {},
+    start() { },
 
-    initStepShowData: function(num, score) {
+    initStepShowData: function (num, score) {
+        window.ddpStep = num;
         if (num >= 10) {
             this.stepNumber.string = 'NO 0' + num;
         } else {

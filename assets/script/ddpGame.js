@@ -38,8 +38,8 @@ cc.Class({
         window.cardClick = true;
         //上一张选中的卡牌节点
         window.previousSelection = null;
-        //游戏难度等级
-        this.level = 6;
+        //游戏关卡
+        this.level = window.ddpStep;
         //初始得分
         this.initScore = 100;
         //单场得分

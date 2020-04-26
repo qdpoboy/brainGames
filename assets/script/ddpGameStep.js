@@ -1,3 +1,4 @@
+var ddpStepConfig = require('config/ddpStep');
 cc.Class({
     extends: cc.Component,
 
@@ -20,6 +21,7 @@ cc.Class({
 
     onLoad () {
         this.init();
+        console.log(ddpStepConfig);
     },
 
     init: function() {
@@ -34,7 +36,6 @@ cc.Class({
         let stepArr = [1, 2, 3, 4, 5, 6];
         for (let i = 0; i < stepArr.length; i++) {
             let stepNode = cc.instantiate(this.ddpStepPrefab);
-            console.log(stepArr[i]);
             stepNode.getComponent('ddpStep').initStepShowData(stepArr[i], 0);
             //为了让ddpCard.js可调用ddpGame.js的方法
             // cardNode.getComponent('ddpCard').game = this;
