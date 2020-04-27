@@ -1,3 +1,4 @@
+var ddpStepConfig = require('./config/ddpStep');
 cc.Class({
     extends: cc.Component,
 
@@ -22,6 +23,10 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
+        nowStep: {
+            default: null,
+            type: cc.Label
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -38,8 +43,6 @@ cc.Class({
         window.cardClick = true;
         //上一张选中的卡牌节点
         window.previousSelection = null;
-        //游戏关卡
-        this.level = window.ddpStep;
         //初始得分
         this.initScore = 100;
         //单场得分
@@ -51,17 +54,20 @@ cc.Class({
         } else {
             this.totalScore = 0;
         }
+        //显示当前关卡
+        if (window.ddpStep >= 10) {
+            this.nowStep.string = 'NO 0' + window.ddpStep;
+        } else {
+            this.nowStep.string = 'NO 00' + window.ddpStep;
+        }
         this.initMap();
     },
 
     initMap: function () {
-        if (this.level > 6) {
-            this.level = 6;
-        }
-        let ballCnt = 6 * this.level;
-        // let randArr = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5];
-        let randArr = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6];
-        for (let i = 0; i < ballCnt; i++) {
+        //游戏关卡数据
+        let nowStepData = ddpStepConfig[window.ddpStep - 1];
+        let randArr = nowStepData.cards;
+        for (let i = 0; i < nowStepData.totalcard; i++) {
             let randIndex = Math.floor(Math.random() * randArr.length);
             //适配宽度小的屏幕
             if (cc.winSize.width <= 600) {
@@ -87,7 +93,7 @@ cc.Class({
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
-    //两张牌不相同，减分分
+    //两张牌不相同，减分
     loseScore: function () {
         if (this.singleScore <= 0) {
             this.singleScore = 0;
@@ -103,8 +109,17 @@ cc.Class({
     //本场游戏获胜
     gameWin: function () {
         this.totalScore += this.singleScore;
-        //本地存储，总分记录
+        //本地存储，总积分记录
         cc.sys.localStorage.setItem('totalScore', this.totalScore);
+        //本地存储，关卡积分记录
+        let ddpStepScore = cc.sys.localStorage.getItem('ddpStepScore');
+        //let kk = 'step' + window.ddpStep;
+        //let ddpStepScore.('step' + window.ddpStep) = this.singleScore;
+        //JSON.stringify();//json转字符串
+        //JSON.parse();//字符串转json
+        
+        
+        cc.sys.localStorage.setItem('ddpStepScore', JSON.stringify(ddpStepScore));
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
         if (confirm('重新开始一局？')) {

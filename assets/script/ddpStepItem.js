@@ -15,15 +15,18 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        this.node.on(cc.Node.EventType.TOUCH_START, function () {
-            cc.director.loadScene('ddpGame');
-        }, this);
+
     },
 
     start() { },
 
     initStepShowData: function (num, score) {
-        window.ddpStep = num;
+        //当前关卡
+        this.ddpStep = num;
+        this.node.on(cc.Node.EventType.TOUCH_START, function () {
+            window.ddpStep = this.ddpStep;
+            cc.director.loadScene('ddpGame');
+        }, this);
         if (num >= 10) {
             this.stepNumber.string = 'NO 0' + num;
         } else {
