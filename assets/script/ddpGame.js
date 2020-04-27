@@ -47,8 +47,10 @@ cc.Class({
         this.initScore = 100;
         //单场得分
         this.singleScore = 100;
+        //单场两张牌相同消除的次数
+        this.sameCnt = 0;
         //总得分
-        let localTotalScore = cc.sys.localStorage.getItem('totalScore');
+        let localTotalScore = cc.sys.localStorage.getItem('ddpTotalScore');
         if (localTotalScore) {
             this.totalScore = parseInt(localTotalScore);
         } else {
@@ -60,14 +62,14 @@ cc.Class({
         } else {
             this.nowStep.string = 'NO 00' + window.ddpStep;
         }
+        //当前游戏关卡数据
+        this.nowStepData = ddpStepConfig[window.ddpStep - 1];
         this.initMap();
     },
 
     initMap: function () {
-        //游戏关卡数据
-        let nowStepData = ddpStepConfig[window.ddpStep - 1];
-        let randArr = nowStepData.cards;
-        for (let i = 0; i < nowStepData.totalcard; i++) {
+        let randArr = this.nowStepData.cards;
+        for (let i = 0; i < this.nowStepData.totalcard; i++) {
             let randIndex = Math.floor(Math.random() * randArr.length);
             //适配宽度小的屏幕
             if (cc.winSize.width <= 600) {
@@ -84,11 +86,9 @@ cc.Class({
         }
     },
 
-    //两张牌相同，加分
-    gainScore: function () {
-        this.singleScore += 1;
-        //更新得分
-        this.scoreLabel.string = '' + this.singleScore;
+    //两张牌相同
+    sameCard: function () {
+        this.sameCnt++;
         //播放得分音效
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
@@ -106,20 +106,23 @@ cc.Class({
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
-    //本场游戏获胜
+    //游戏获胜
     gameWin: function () {
         this.totalScore += this.singleScore;
         //本地存储，总积分记录
-        cc.sys.localStorage.setItem('totalScore', this.totalScore);
+        cc.sys.localStorage.setItem('ddpTotalScore', this.totalScore);
         //本地存储，关卡积分记录
-        let ddpStepScore = cc.sys.localStorage.getItem('ddpStepScore');
-        //let kk = 'step' + window.ddpStep;
-        //let ddpStepScore.('step' + window.ddpStep) = this.singleScore;
+        let kk = 'ddpScoreStep' + window.ddpStep;
+        let ddpScoreStep = cc.sys.localStorage.getItem(kk);
+        if (ddpScoreStep) {
+            if (this.singleScore > parseInt(ddpScoreStep)) {
+                cc.sys.localStorage.setItem(kk, this.singleScore);
+            }
+        } else {
+            cc.sys.localStorage.setItem(kk, this.singleScore);
+        }
         //JSON.stringify();//json转字符串
         //JSON.parse();//字符串转json
-        
-        
-        cc.sys.localStorage.setItem('ddpStepScore', JSON.stringify(ddpStepScore));
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
         if (confirm('重新开始一局？')) {
@@ -128,7 +131,7 @@ cc.Class({
             this.ctrlArea.destroyAllChildren();
             this.init();
         } else {
-            cc.director.loadScene('start');
+            cc.director.loadScene('gameList');
         }
     },
 
@@ -139,7 +142,7 @@ cc.Class({
     // start () {},
 
     update(dt) {
-        if (this.singleScore == 18) {
+        if (this.sameCnt >= this.nowStepData.totalcard / 2) {
             this.gameWin();
         }
     },

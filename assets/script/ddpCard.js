@@ -11,7 +11,7 @@ cc.Class({
             type: cc.Sprite
         }
     },
-    
+
     onLoad() {
         this.back = true;
         this.cardIndex;
@@ -23,22 +23,20 @@ cc.Class({
 
     //翻转
     flip: function () {
-
         if (this.back && cardClick) {
             //this.filpAnimation(this);
-            
             this.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame(this.cardIndex);
             this.back = false;
             if (previousSelection) {
                 if (previousSelection.cardIndex == this.cardIndex) {
                     cardClick = false;
-                    this.scheduleOnce(function() {
+                    this.scheduleOnce(function () {
                         this.returnOk();
                     }, 1);
                 } else {
                     this.filpAnimation(previousSelection);
                     cardClick = false;
-                    this.scheduleOnce(function() {
+                    this.scheduleOnce(function () {
                         this.returnBack();
                     }, 1.5);
                 }
@@ -56,7 +54,7 @@ cc.Class({
     },
 
 
-    returnBack: function() {
+    returnBack: function () {
         //执行减分
         this.game.loseScore();
         previousSelection.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame('card_back');
@@ -68,9 +66,8 @@ cc.Class({
         cardClick = true;
     },
 
-    returnOk: function() {
-        ////执行加分
-        //this.game.gainScore();
+    returnOk: function () {
+        this.game.sameCard();
         //this.filpAnimation(previousSelection);
         //解除绑定事件
         previousSelection.cardSprite.node.off(cc.Node.EventType.TOUCH_START, previousSelection.flip, previousSelection);
@@ -83,17 +80,12 @@ cc.Class({
         cardClick = true;
     },
 
-    
-
-
-    filpAnimation: function(theOne) {
+    filpAnimation: function (theOne) {
         //卡牌翻转动画
         if (theOne.back) {
-            
             let rotationTo = cc.rotateTo(0.5, 0, 180);
             theOne.cardSprite.node.runAction(rotationTo);
         } else {
-            
             let rotationTo = cc.rotateTo(0.5, 0, 360);
             theOne.cardSprite.node.runAction(rotationTo);
         }

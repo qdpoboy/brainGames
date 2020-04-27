@@ -16,8 +16,6 @@ cc.Class({
         },
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
         this.init();
     },
@@ -31,10 +29,15 @@ cc.Class({
 
     //初始化所有关卡
     initSteps: function () {
-        let stepArr = [1, 2, 3, 4, 5, 6];
+        let stepArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
         for (let i = 0; i < stepArr.length; i++) {
             let stepNode = cc.instantiate(this.ddpStepPrefab);
-            stepNode.getComponent('ddpStepItem').initStepShowData(stepArr[i], 0);
+            let localStepScore = cc.sys.localStorage.getItem('ddpScoreStep' + stepArr[i]);
+            let stepScore = 0;
+            if (localStepScore) {
+                stepScore = parseInt(localStepScore);
+            }
+            stepNode.getComponent('ddpStepItem').initStepShowData(stepArr[i], stepScore);
             //为了让ddpCard.js可调用ddpGame.js的方法
             // cardNode.getComponent('ddpCard').game = this;
             this.stepLayout.addChild(stepNode);

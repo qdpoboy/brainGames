@@ -12,8 +12,6 @@ cc.Class({
         }
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
 
     },
@@ -33,6 +31,11 @@ cc.Class({
             this.stepNumber.string = 'NO 00' + num;
         }
         this.stepScore.string = '' + score;
+        //改变颜色，代表玩过了
+        if (score > 0) {
+            this.stepNumber.node.color = new cc.Color('#3795E8');
+            this.stepScore.node.color = new cc.Color('#3795E8');
+        }
     },
 
     // update (dt) {},
