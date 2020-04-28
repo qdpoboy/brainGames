@@ -62,14 +62,38 @@ cc.Class({
 
     initMap: function () {
         let randArr = this.nowStepData.cards;
+        let bigCard = false;
+        //根据卡牌数量，适配屏幕，调整layout布局
+        if (this.nowStepData.totalcard == 4) {
+            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 150;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = 200;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = 150;
+            bigCard = true;
+        } else if (this.nowStepData.totalcard == 8) {
+            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 60;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = 200;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = 60;
+            bigCard = true;
+        } else if (this.nowStepData.totalcard == 16) {
+            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 60;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = 100;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = 60;
+            bigCard = true;
+        }
         for (let i = 0; i < this.nowStepData.totalcard; i++) {
             let randIndex = Math.floor(Math.random() * randArr.length);
             //适配宽度小的屏幕
-            if (cc.winSize.width <= 600) {
-                var cardNode = cc.instantiate(this.cardPrefab1);
+            if (cc.winSize.width > 600 || bigCard) {
+                var cardNode = cc.instantiate(this.cardPrefab2);
                 // cardNode.width = 68;
             } else {
-                var cardNode = cc.instantiate(this.cardPrefab2);
+                var cardNode = cc.instantiate(this.cardPrefab1);
             }
             cardNode.getComponent('ddpCard').randCard(randArr[randIndex]);
             //为了让ddpCard.js可调用ddpGame.js的方法
