@@ -1,3 +1,4 @@
+var ddpStepConfig = require('./config/ddpStep');
 cc.Class({
     extends: cc.Component,
 
@@ -16,15 +17,22 @@ cc.Class({
         }
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
         //默认对对碰选中的关卡
         window.ddpStep = 1;
-        let ddpTotalScore = cc.sys.localStorage.getItem('ddpTotalScore');
-        if (ddpTotalScore) {
-            this.ddpGameTotalScore.string = ddpTotalScore;
+        //计算ddp所有关卡总分之和
+        this.ddpTotalScore = 0;
+        for (let i = 0; i < ddpStepConfig.length; i++) {
+            let ddpScoreStep = cc.sys.localStorage.getItem('ddpScoreStep' + ddpStepConfig[i].step);
+            if (ddpScoreStep) {
+                this.ddpTotalScore += parseInt(ddpScoreStep);
+            }
         }
+        //得分超过10000调整字体大小
+        if (this.ddpTotalScore >= 10000) {
+            this.ddpGameTotalScore.fontSize = 40;
+        }
+        this.ddpGameTotalScore.string = this.ddpTotalScore;
         this.ddpGameIcon.node.on(cc.Node.EventType.TOUCH_START, function () {
             cc.director.loadScene('ddpGameStep');
         }, this);

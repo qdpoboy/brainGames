@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        544.7299789804119,
+        563.7825378636696,
         0,
         0,
         0,
@@ -644,7 +644,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        210,
+        160,
         148.5,
         0,
         0,
@@ -713,7 +713,7 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": 0,
-    "_right": 20,
+    "_right": 70,
     "_top": 20,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -730,7 +730,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "icon1",
+    "_name": "icon",
     "_objFlags": 0,
     "_parent": {
       "__id__": 8
@@ -1238,7 +1238,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        231,
+        181,
         0,
         0,
         0,
@@ -1309,7 +1309,7 @@
     "_target": null,
     "_alignFlags": 32,
     "_left": 0,
-    "_right": 50,
+    "_right": 100,
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,

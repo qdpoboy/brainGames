@@ -38,5 +38,10 @@ cc.Class({
         }
     },
 
+    //验证当前关卡是否可以玩，必须前一关通过了才能玩下一关
+    checkStepPlay: function () {
+
+    },
+
     // update (dt) {},
 });

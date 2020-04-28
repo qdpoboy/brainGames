@@ -49,13 +49,6 @@ cc.Class({
         this.singleScore = 100;
         //单场两张牌相同消除的次数
         this.sameCnt = 0;
-        //总得分
-        let localTotalScore = cc.sys.localStorage.getItem('ddpTotalScore');
-        if (localTotalScore) {
-            this.totalScore = parseInt(localTotalScore);
-        } else {
-            this.totalScore = 0;
-        }
         //显示当前关卡
         if (window.ddpStep >= 10) {
             this.nowStep.string = 'NO 0' + window.ddpStep;
@@ -93,7 +86,7 @@ cc.Class({
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
-    //两张牌不相同，减分
+    //执行减分
     loseScore: function () {
         if (this.singleScore <= 0) {
             this.singleScore = 0;
@@ -108,9 +101,6 @@ cc.Class({
 
     //游戏获胜
     gameWin: function () {
-        this.totalScore += this.singleScore;
-        //本地存储，总积分记录
-        cc.sys.localStorage.setItem('ddpTotalScore', this.totalScore);
         //本地存储，关卡积分记录
         let kk = 'ddpScoreStep' + window.ddpStep;
         let ddpScoreStep = cc.sys.localStorage.getItem(kk);

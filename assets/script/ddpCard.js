@@ -24,6 +24,8 @@ cc.Class({
     //翻转
     flip: function () {
         if (this.back && cardClick) {
+            //执行减分
+            this.game.loseScore();
             //this.filpAnimation(this);
             this.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame(this.cardIndex);
             this.back = false;
@@ -55,8 +57,6 @@ cc.Class({
 
 
     returnBack: function () {
-        //执行减分
-        this.game.loseScore();
         previousSelection.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame('card_back');
         previousSelection.back = true;
         //this.filpAnimation(this);

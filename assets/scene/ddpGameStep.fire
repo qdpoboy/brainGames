@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        544.7299789804119,
+        548.668359055753,
         0,
         0,
         0,
@@ -679,7 +679,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 900
+      "height": 1050
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -691,7 +691,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        40,
+        -35,
         0,
         0,
         0,
@@ -754,7 +754,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 900
+      "height": 1050
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -826,7 +826,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 12,
-      "height": 900
+      "height": 1050
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1034,7 +1034,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 900
+      "height": 1050
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1046,7 +1046,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        450,
+        525,
         0,
         0,
         0,
@@ -1103,7 +1103,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 900
+      "height": 1050
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1223,8 +1223,8 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 200
+      "width": 660,
+      "height": 1050
     },
     "_resize": 0,
     "_N$layoutType": 3,
@@ -1346,7 +1346,7 @@
     "_enabled": true,
     "alignMode": 1,
     "_target": null,
-    "_alignFlags": 40,
+    "_alignFlags": 45,
     "_left": 0,
     "_right": 0,
     "_top": 0,
@@ -1360,7 +1360,7 @@
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
     "_originalWidth": 660,
-    "_originalHeight": 0,
+    "_originalHeight": 900,
     "_id": "7ai52ChqZLjKVGO1XpXjiP"
   },
   {
@@ -1373,11 +1373,11 @@
     "_enabled": true,
     "alignMode": 1,
     "_target": null,
-    "_alignFlags": 41,
+    "_alignFlags": 45,
     "_left": 30,
     "_right": 30,
     "_top": 150,
-    "_bottom": 0,
+    "_bottom": 80,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1387,7 +1387,7 @@
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
     "_originalWidth": 660,
-    "_originalHeight": 0,
+    "_originalHeight": 900,
     "_id": "acqQSsQ9VFfoqfg39kOTSB"
   },
   {
