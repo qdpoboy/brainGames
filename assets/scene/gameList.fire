@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        563.7825378636696,
+        546.525539063137,
         0,
         0,
         0,
@@ -644,7 +644,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        160,
+        170,
         148.5,
         0,
         0,
@@ -713,7 +713,7 @@
     "_target": null,
     "_alignFlags": 33,
     "_left": 0,
-    "_right": 70,
+    "_right": 60,
     "_top": 20,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -1080,14 +1080,14 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        55.61500000000001,
+        0,
         25.2,
         0,
         0,
@@ -1155,7 +1155,7 @@
     "alignMode": 1,
     "_target": null,
     "_alignFlags": 12,
-    "_left": 141.71,
+    "_left": 100,
     "_right": 0,
     "_top": 0,
     "_bottom": 0,
@@ -1426,14 +1426,14 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -96.66,
+        -20,
         25.2,
         0,
         0,
@@ -1502,7 +1502,7 @@
     "_target": null,
     "_alignFlags": 36,
     "_left": 0,
-    "_right": 150,
+    "_right": 120,
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -1545,19 +1545,19 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 90,
       "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 1,
       "y": 0.5
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        33.290000000000006,
+        100,
         25.2,
         0,
         0,
@@ -1598,7 +1598,7 @@
     "_useOriginalSize": false,
     "_string": "暂无",
     "_N$string": "暂无",
-    "_fontSize": 50,
+    "_fontSize": 45,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -1626,7 +1626,7 @@
     "_target": null,
     "_alignFlags": 36,
     "_left": 100,
-    "_right": 16.709999999999994,
+    "_right": 0,
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,

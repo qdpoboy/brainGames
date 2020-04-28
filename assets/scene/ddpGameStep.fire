@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        562.3617149355857,
+        546.525539063137,
         0,
         0,
         0,
@@ -969,7 +969,7 @@
     },
     "_touching": false,
     "_opacity": 255,
-    "enableAutoHide": true,
+    "enableAutoHide": false,
     "autoHideTime": 1,
     "_N$handle": {
       "__id__": 18
@@ -1226,7 +1226,7 @@
       "width": 660,
       "height": 1050
     },
-    "_resize": 0,
+    "_resize": 1,
     "_N$layoutType": 3,
     "_N$cellSize": {
       "__type__": "cc.Size",

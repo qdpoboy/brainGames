@@ -106,6 +106,9 @@ cc.Class({
     //两张牌相同
     sameCard: function () {
         this.sameCnt++;
+        if (this.sameCnt >= this.nowStepData.totalcard / 2) {
+            this.gameWin();
+        }
         //播放得分音效
         //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
@@ -145,7 +148,7 @@ cc.Class({
             this.ctrlArea.destroyAllChildren();
             this.init();
         } else {
-            cc.director.loadScene('gameList');
+            cc.director.loadScene('ddpGameStep');
         }
     },
 
@@ -155,9 +158,5 @@ cc.Class({
 
     // start () {},
 
-    update(dt) {
-        if (this.sameCnt >= this.nowStepData.totalcard / 2) {
-            this.gameWin();
-        }
-    },
+    // update(dt) {},
 });
