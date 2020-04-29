@@ -57,11 +57,14 @@ cc.Class({
         }
         //当前游戏关卡数据
         this.nowStepData = ddpStepConfig[window.ddpStep - 1];
+        console.log(ddpStepConfig);
         this.initMap();
     },
 
     initMap: function () {
-        let randArr = this.nowStepData.cards;
+        // var randArrCards = {'cards' : this.nowStepData.cards};
+        let randArr = [];
+        randArr = this.nowStepData.cards;
         let bigCard = false;
         //根据卡牌数量，适配屏幕，调整layout布局
         if (this.nowStepData.totalcard == 4) {
@@ -142,11 +145,9 @@ cc.Class({
         //JSON.parse();//字符串转json
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
+        cc.director.preloadScene('ddpGame');
         if (confirm('重新开始一局？')) {
-            this.singleScore = this.initScore;
-            this.scoreLabel.string = '' + this.initScore;
-            this.ctrlArea.destroyAllChildren();
-            this.init();
+            cc.director.loadScene('ddpGame');
         } else {
             cc.director.loadScene('ddpGameStep');
         }

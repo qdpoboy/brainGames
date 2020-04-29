@@ -67,7 +67,6 @@ cc.Class({
     },
 
     returnOk: function () {
-        this.game.sameCard();
         //this.filpAnimation(previousSelection);
         //解除绑定事件
         previousSelection.cardSprite.node.off(cc.Node.EventType.TOUCH_START, previousSelection.flip, previousSelection);
@@ -78,6 +77,7 @@ cc.Class({
         this.node.getComponent(cc.Sprite).spriteFrame = this.cardAtlas.getSpriteFrame('card_ok');
         previousSelection = null;
         cardClick = true;
+        this.game.sameCard();
     },
 
     filpAnimation: function (theOne) {
