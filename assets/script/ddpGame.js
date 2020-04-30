@@ -27,6 +27,21 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        //两张牌相同时音效
+        okAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
+        //翻牌音效
+        filpAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
+        //洗牌音效
+        shuffleAudio: {
+            default: null,
+            type: cc.AudioClip
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,7 +50,12 @@ cc.Class({
         this.backBtn.node.on(cc.Node.EventType.TOUCH_START, function () {
             cc.director.loadScene('ddpGameStep');
         }, this);
-        this.init();
+        //播放洗牌音效
+        cc.audioEngine.playEffect(this.shuffleAudio, false);
+        //配合洗牌音效，延时执行
+        this.scheduleOnce(function () {
+            this.init();
+        }, 0.6);
     },
 
     init: function () {
@@ -57,14 +77,12 @@ cc.Class({
         }
         //当前游戏关卡数据
         this.nowStepData = ddpStepConfig[window.ddpStep - 1];
-        console.log(ddpStepConfig);
         this.initMap();
     },
 
     initMap: function () {
-        // var randArrCards = {'cards' : this.nowStepData.cards};
-        let randArr = [];
-        randArr = this.nowStepData.cards;
+        let randArrStr = JSON.stringify(this.nowStepData.cards);
+        let randArr = JSON.parse(randArrStr);
         let bigCard = false;
         //根据卡牌数量，适配屏幕，调整layout布局
         if (this.nowStepData.totalcard == 4) {
@@ -108,16 +126,18 @@ cc.Class({
 
     //两张牌相同
     sameCard: function () {
+        //播放得分音效
+        cc.audioEngine.playEffect(this.okAudio, false);
         this.sameCnt++;
         if (this.sameCnt >= this.nowStepData.totalcard / 2) {
             this.gameWin();
         }
-        //播放得分音效
-        //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     //执行减分
     loseScore: function () {
+        //播放翻牌音效
+        cc.audioEngine.playEffect(this.filpAudio, false);
         if (this.singleScore <= 0) {
             this.singleScore = 0;
         } else {
@@ -125,8 +145,6 @@ cc.Class({
         }
         //更新得分
         this.scoreLabel.string = '' + this.singleScore;
-        //播放得分音效
-        //cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     //游戏获胜

@@ -183,7 +183,7 @@
       "array": [
         0,
         0,
-        546.525539063137,
+        544.7299789804119,
         0,
         0,
         0,
@@ -1580,6 +1580,15 @@
     },
     "nowStep": {
       "__id__": 15
+    },
+    "okAudio": {
+      "__uuid__": "f2ca84c0-b579-4392-95df-ad4c18b0f9da"
+    },
+    "filpAudio": {
+      "__uuid__": "c58b75eb-d745-4377-a21d-532edf1982a4"
+    },
+    "shuffleAudio": {
+      "__uuid__": "d0107ab3-5190-4c69-a81d-cf48c37e1b94"
     },
     "_id": "53K5OrxQZJ7brUgxtfUGOd"
   },
