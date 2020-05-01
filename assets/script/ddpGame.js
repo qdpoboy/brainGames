@@ -41,7 +41,12 @@ cc.Class({
         shuffleAudio: {
             default: null,
             type: cc.AudioClip
-        }
+        },
+        //确认弹框
+        alertPrefab: {
+            default: null,
+            type: cc.Prefab
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -50,12 +55,7 @@ cc.Class({
         this.backBtn.node.on(cc.Node.EventType.TOUCH_START, function () {
             cc.director.loadScene('ddpGameStep');
         }, this);
-        //播放洗牌音效
-        cc.audioEngine.playEffect(this.shuffleAudio, false);
-        //配合洗牌音效，延时执行
-        this.scheduleOnce(function () {
-            this.init();
-        }, 0.6);
+        this.init();
     },
 
     init: function () {
@@ -77,7 +77,16 @@ cc.Class({
         }
         //当前游戏关卡数据
         this.nowStepData = ddpStepConfig[window.ddpStep - 1];
-        this.initMap();
+        //播放洗牌音效
+        cc.audioEngine.playEffect(this.shuffleAudio, false);
+        let extendTime = 0.7;
+        if (this.nowStepData.totalcard <= 16) {
+            extendTime = 0.4;
+        }
+        //配合洗牌音效，延时执行
+        this.scheduleOnce(function () {
+            this.initMap();
+        }, extendTime);
     },
 
     initMap: function () {
@@ -164,11 +173,15 @@ cc.Class({
         //删除本地存储
         //cc.sys.localStorage.removeItem(key);
         cc.director.preloadScene('ddpGame');
-        if (confirm('重新开始一局？')) {
-            cc.director.loadScene('ddpGame');
-        } else {
-            cc.director.loadScene('ddpGameStep');
-        }
+        cc.director.preloadScene('ddpGameStep');
+        var alert = cc.instantiate(this.alertPrefab);
+        this.node.addChild(alert);
+        alert.getComponent('alert').setNext('恭喜过关！此局得分' + this.singleScore + '！');
+        // if (confirm('重新开始一局？')) {
+        //     cc.director.loadScene('ddpGame');
+        // } else {
+        //     cc.director.loadScene('ddpGameStep');
+        // }
     },
 
     gameLost: function () {
