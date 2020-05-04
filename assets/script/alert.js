@@ -22,11 +22,11 @@ cc.Class({
     setNext: function (title) {
         this.titleLabel.string = title;
         this.yesBtn.node.getChildByName('Background').getChildByName('yesLabel').getComponent(cc.Label).string = '下一关';
-        this.yesBtn.node.on(cc.Node.EventType.TOUCH_START, function () {
+        this.yesBtn.node.on(cc.Node.EventType.TOUCH_END, function () {
             window.ddpStep++;
             cc.director.loadScene('ddpGame');
         }, this);
-        this.noBtn.node.on(cc.Node.EventType.TOUCH_START, function () {
+        this.noBtn.node.on(cc.Node.EventType.TOUCH_END, function () {
             cc.director.loadScene('ddpGameStep');
         }, this);
     },

@@ -42,6 +42,8 @@ cc.Class({
             // cardNode.getComponent('ddpCard').game = this;
             this.stepLayout.addChild(stepNode);
         }
+        //预加载
+        cc.director.preloadScene('ddpGame');
     },
 
     start() {

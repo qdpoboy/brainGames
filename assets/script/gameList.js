@@ -33,6 +33,8 @@ cc.Class({
             this.ddpGameTotalScore.fontSize = 40;
         }
         this.ddpGameTotalScore.string = this.ddpTotalScore;
+        //预加载
+        cc.director.preloadScene('ddpGameStep');
         this.ddpGameIcon.node.on(cc.Node.EventType.TOUCH_START, function () {
             cc.director.loadScene('ddpGameStep');
         }, this);

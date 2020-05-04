@@ -5,8 +5,9 @@ cc.Class({
     },
 
     onLoad() {
+        //预加载
+        cc.director.preloadScene('gameList');
         this.node.on(cc.Node.EventType.TOUCH_START, function () {
-            //cc.director.loadScene('ddpGame');
             cc.director.loadScene('gameList');
         }, this);
     },

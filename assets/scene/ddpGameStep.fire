@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        544.7226980514799,
+        545.041206859897,
         0,
         0,
         0,
@@ -679,7 +679,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1050
+      "height": 1100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -691,7 +691,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -35,
+        -40,
         0,
         0,
         0,
@@ -743,7 +743,7 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 255,
+    "_opacity": 254.23499999999999,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -754,7 +754,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1050
+      "height": 1100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -826,7 +826,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 12,
-      "height": 1050
+      "height": 1100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -969,7 +969,7 @@
     },
     "_touching": false,
     "_opacity": 255,
-    "enableAutoHide": false,
+    "enableAutoHide": true,
     "autoHideTime": 1,
     "_N$handle": {
       "__id__": 18
@@ -1034,7 +1034,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1050
+      "height": 1100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1046,7 +1046,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        525,
+        550,
         0,
         0,
         0,
@@ -1103,7 +1103,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1050
+      "height": 1100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1224,7 +1224,7 @@
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1050
+      "height": 1100
     },
     "_resize": 1,
     "_N$layoutType": 3,
@@ -1236,7 +1236,7 @@
     "_N$startAxis": 0,
     "_N$paddingLeft": 25,
     "_N$paddingRight": 0,
-    "_N$paddingTop": 25,
+    "_N$paddingTop": 0,
     "_N$paddingBottom": 25,
     "_N$spacingX": 25,
     "_N$spacingY": 20,
@@ -1320,7 +1320,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "9bbda31e-ad49-43c9-aaf2-f7d9896bac69"
+      "__uuid__": "ecfe552c-5c35-4dc0-b1c9-954c88bfa208"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1376,8 +1376,8 @@
     "_alignFlags": 45,
     "_left": 30,
     "_right": 30,
-    "_top": 150,
-    "_bottom": 80,
+    "_top": 130,
+    "_bottom": 50,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
