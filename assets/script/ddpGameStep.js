@@ -42,8 +42,11 @@ cc.Class({
             // cardNode.getComponent('ddpCard').game = this;
             this.stepLayout.addChild(stepNode);
         }
-        //预加载
+        //预加载场景
         cc.director.preloadScene('ddpGame');
+        //预加载声音资源
+        cc.loader.loadResDir('resources/audio/shuffle', cc.AudioClip, function (err, clip) {
+        });
     },
 
     start() {

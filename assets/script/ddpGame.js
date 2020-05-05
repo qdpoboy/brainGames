@@ -27,6 +27,10 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        bottomNowStep: {
+            default: null,
+            type: cc.Label
+        },
         //两张牌相同时音效
         okAudio: {
             default: null,
@@ -72,8 +76,10 @@ cc.Class({
         //显示当前关卡
         if (window.ddpStep >= 10) {
             this.nowStep.string = 'NO 0' + window.ddpStep;
+            this.bottomNowStep.string = 'NO 0' + window.ddpStep;
         } else {
             this.nowStep.string = 'NO 00' + window.ddpStep;
+            this.bottomNowStep.string = 'NO 00' + window.ddpStep;
         }
         //当前游戏关卡数据
         this.nowStepData = ddpStepConfig[window.ddpStep - 1];
