@@ -92,34 +92,11 @@ cc.Class({
     initMap: function () {
         let randArrStr = JSON.stringify(this.nowStepData.cards);
         let randArr = JSON.parse(randArrStr);
-        let bigCard = false;
-        //根据卡牌数量，适配屏幕，调整layout布局
-        if (this.nowStepData.totalcard == 4) {
-            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
-            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
-            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 150;
-            this.ctrlArea.getComponent(cc.Layout).paddingTop = 200;
-            this.ctrlArea.getComponent(cc.Layout).paddingRight = 150;
-            bigCard = true;
-        } else if (this.nowStepData.totalcard == 8) {
-            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
-            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
-            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 60;
-            this.ctrlArea.getComponent(cc.Layout).paddingTop = 200;
-            this.ctrlArea.getComponent(cc.Layout).paddingRight = 60;
-            bigCard = true;
-        } else if (this.nowStepData.totalcard == 16) {
-            this.ctrlArea.getComponent(cc.Layout).spacingX = 50;
-            this.ctrlArea.getComponent(cc.Layout).spacingY = 50;
-            this.ctrlArea.getComponent(cc.Layout).paddingLeft = 60;
-            this.ctrlArea.getComponent(cc.Layout).paddingTop = 100;
-            this.ctrlArea.getComponent(cc.Layout).paddingRight = 60;
-            bigCard = true;
-        }
+        this.bigCard = false;
+        this.fitScreen();
         for (let i = 0; i < this.nowStepData.totalcard; i++) {
             let randIndex = Math.floor(Math.random() * randArr.length);
-            //适配宽度小的屏幕
-            if (cc.winSize.width > 600 || bigCard) {
+            if (this.bigCard) {
                 var cardNode = cc.instantiate(this.cardPrefab2);
                 // cardNode.width = 68;
             } else {
@@ -130,6 +107,68 @@ cc.Class({
             cardNode.getComponent('ddpCard').game = this;
             randArr.splice(randIndex, 1);
             this.ctrlArea.addChild(cardNode);
+        }
+    },
+
+    //适配屏幕
+    fitScreen: function () {
+        //根据卡牌数量，适配屏幕，调整layout布局
+        if (this.nowStepData.totalcard == 4) {
+            let spacingX = 50;
+            let spacingY = 50;
+            let paddingLR = (cc.winSize.width - 30 * 2 - spacingX - 90 * 2) / 2;
+            let paddingTB = (cc.find('Canvas/body').height - 122 * 2 - spacingY - 20) / 2;
+            this.ctrlArea.getComponent(cc.Layout).spacingX = spacingX;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = spacingY;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = paddingLR;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = paddingTB;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = paddingLR;
+            this.bigCard = true;
+        } else if (this.nowStepData.totalcard == 8) {
+            let spacingX = 50;
+            let spacingY = 50;
+            let paddingLR = (cc.winSize.width - 30 * 2 - spacingX * 3 - 90 * 4) / 2;
+            let paddingTB = (cc.find('Canvas/body').height - 122 * 2 - spacingY - 20) / 2;
+            this.ctrlArea.getComponent(cc.Layout).spacingX = spacingX;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = spacingY;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = paddingLR;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = paddingTB;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = paddingLR;
+            this.bigCard = true;
+        } else if (this.nowStepData.totalcard == 16) {
+            let spacingX = 50;
+            let spacingY = 50;
+            let paddingLR = (cc.winSize.width - 30 * 2 - spacingX * 3 - 90 * 4) / 2;
+            let paddingTB = (cc.find('Canvas/body').height - 122 * 4 - spacingY * 3 - 20) / 2;
+            this.ctrlArea.getComponent(cc.Layout).spacingX = spacingX;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = spacingY;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = paddingLR;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = paddingTB;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = paddingLR;
+            this.bigCard = true;
+        } else {
+            let paddingLR = 0;
+            let paddingTB = 0;
+            let spacingX = 0;
+            let spacingY = 0;
+            if (cc.winSize.width > 600) {
+                this.bigCard = true;
+                spacingX = 15;
+                spacingY = 15;
+                paddingLR = (cc.winSize.width - 30 * 2 - spacingX * 5 - 90 * 6) / 2;
+                paddingTB = (cc.find('Canvas/body').height - 122 * 6 - spacingY * 5 - 20) / 2;
+            } else {
+                this.bigCard = false;
+                spacingX = 15;
+                spacingY = 50;
+                paddingLR = (cc.winSize.width - 30 * 2 - spacingX * 5 - 60 * 6) / 2;
+                paddingTB = (cc.find('Canvas/body').height - 80 * 6 - spacingY * 5 - 20) / 2;
+            }
+            this.ctrlArea.getComponent(cc.Layout).spacingX = spacingX;
+            this.ctrlArea.getComponent(cc.Layout).spacingY = spacingY;
+            this.ctrlArea.getComponent(cc.Layout).paddingLeft = paddingLR;
+            this.ctrlArea.getComponent(cc.Layout).paddingTop = paddingTB;
+            this.ctrlArea.getComponent(cc.Layout).paddingRight = paddingLR;
         }
     },
 
