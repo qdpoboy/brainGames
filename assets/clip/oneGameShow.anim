@@ -1,0 +1,125 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "oneGameShow",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.3333333333333333,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "gameName": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -630
+            },
+            {
+              "frame": 0.25,
+              "value": 170
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": 200
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 170
+            }
+          ]
+        }
+      },
+      "icon": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -958
+            },
+            {
+              "frame": 0.25,
+              "value": -158
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": -138
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": -158
+            }
+          ]
+        }
+      },
+      "score": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -1000
+            },
+            {
+              "frame": 0.25,
+              "value": -200
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": -170
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": -200
+            }
+          ]
+        }
+      },
+      "play": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -619
+            },
+            {
+              "frame": 0.25,
+              "value": 181
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": 211
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 181
+            }
+          ]
+        }
+      },
+      "ranking": {
+        "props": {
+          "x": [
+            {
+              "frame": 0,
+              "value": -600
+            },
+            {
+              "frame": 0.25,
+              "value": 200
+            },
+            {
+              "frame": 0.2833333333333333,
+              "value": 230
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 200
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
