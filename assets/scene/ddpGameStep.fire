@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        545.041206859897,
+        474.79842762481854,
         0,
         0,
         0,
@@ -378,7 +378,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        560,
+        590,
         0,
         0,
         0,
@@ -635,7 +635,7 @@
     "_alignFlags": 41,
     "_left": 30,
     "_right": 30,
-    "_top": 30,
+    "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -679,7 +679,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1100
+      "height": 1130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -691,7 +691,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -40,
+        -25,
         0,
         0,
         0,
@@ -754,7 +754,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1100
+      "height": 1130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -826,7 +826,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 12,
-      "height": 1100
+      "height": 1130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1034,7 +1034,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1100
+      "height": 1130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1046,7 +1046,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        550,
+        565,
         0,
         0,
         0,
@@ -1103,7 +1103,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1100
+      "height": 1130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1224,7 +1224,7 @@
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 1100
+      "height": 1130
     },
     "_resize": 1,
     "_N$layoutType": 3,
@@ -1234,10 +1234,10 @@
       "height": 40
     },
     "_N$startAxis": 0,
-    "_N$paddingLeft": 25,
+    "_N$paddingLeft": 0,
     "_N$paddingRight": 0,
     "_N$paddingTop": 0,
-    "_N$paddingBottom": 25,
+    "_N$paddingBottom": 0,
     "_N$spacingX": 25,
     "_N$spacingY": 20,
     "_N$verticalDirection": 1,
@@ -1376,7 +1376,7 @@
     "_alignFlags": 45,
     "_left": 30,
     "_right": 30,
-    "_top": 130,
+    "_top": 100,
     "_bottom": 50,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,

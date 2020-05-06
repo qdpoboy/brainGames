@@ -183,7 +183,7 @@
       "array": [
         0,
         0,
-        545.041206859897,
+        474.79842762481854,
         0,
         0,
         0,
@@ -384,7 +384,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        560,
+        590,
         0,
         0,
         0,
@@ -699,7 +699,7 @@
       "ctor": "Float64Array",
       "array": [
         278.305,
-        31.1,
+        11.100000000000001,
         0,
         0,
         0,
@@ -768,7 +768,7 @@
     "_alignFlags": 33,
     "_left": 0,
     "_right": 0,
-    "_top": 0,
+    "_top": 20,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -795,7 +795,7 @@
     "_alignFlags": 41,
     "_left": 30,
     "_right": 30,
-    "_top": 30,
+    "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
@@ -845,7 +845,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 900
+      "height": 1000
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -857,7 +857,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        40,
+        20,
         0,
         0,
         0,
@@ -922,7 +922,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        445,
+        495,
         0,
         0,
         0,
@@ -1039,7 +1039,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 880
+      "height": 980
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1118,7 +1118,7 @@
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 660,
-      "height": 880
+      "height": 980
     },
     "_resize": 0,
     "_N$layoutType": 3,
@@ -1207,7 +1207,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -445,
+        -495,
         0,
         0,
         0,
@@ -1302,11 +1302,11 @@
     "_enabled": true,
     "alignMode": 1,
     "_target": null,
-    "_alignFlags": 41,
+    "_alignFlags": 45,
     "_left": 30,
     "_right": 30,
-    "_top": 150,
-    "_bottom": 415,
+    "_top": 120,
+    "_bottom": 160,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1316,7 +1316,7 @@
     "_isAbsHorizontalCenter": true,
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
-    "_originalHeight": 0,
+    "_originalHeight": 900,
     "_id": "b7kwut4TpPfKGHIhE49wlB"
   },
   {

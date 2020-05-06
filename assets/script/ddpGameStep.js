@@ -38,15 +38,23 @@ cc.Class({
                 stepScore = parseInt(localStepScore);
             }
             stepNode.getComponent('ddpStepItem').initStepShowData(i, stepScore);
-            //为了让ddpCard.js可调用ddpGame.js的方法
-            // cardNode.getComponent('ddpCard').game = this;
             this.stepLayout.addChild(stepNode);
         }
+        this.fitScreen();
         //预加载场景
         cc.director.preloadScene('ddpGame');
-        //预加载声音资源
-        cc.loader.loadResDir('resources/audio/shuffle', cc.AudioClip, function (err, clip) {
-        });
+        //加载声音资源
+        // cc.loader.loadResDir('resources/audio/shuffle', cc.AudioClip, function (err, clip) {
+        // });
+    },
+
+    //适配屏幕，根据屏幕宽度，调整layout布局
+    fitScreen: function () {
+        let length_ = cc.winSize.width - 30 * 2 - 10;
+        let yu_ = length_ % 100;
+        let zheng_ = Math.floor(length_ / 100);
+        let spacingX = (length_ - zheng_ * 100) / (zheng_ - 1);
+        this.stepLayout.getComponent(cc.Layout).spacingX = spacingX;
     },
 
     start() {
