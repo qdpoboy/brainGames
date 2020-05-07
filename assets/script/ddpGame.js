@@ -113,6 +113,8 @@ cc.Class({
             cardNode.getComponent('ddpCard').game = this;
             randArr.splice(randIndex, 1);
             this.ctrlArea.addChild(cardNode);
+            //原地旋转
+            cardNode.runAction(cc.rotateBy(0.8, 360));
         }
     },
 

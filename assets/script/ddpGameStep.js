@@ -39,6 +39,9 @@ cc.Class({
             }
             stepNode.getComponent('ddpStepItem').initStepShowData(i, stepScore);
             this.stepLayout.addChild(stepNode);
+            //动画效果，先设置透明，再逐渐显示
+            stepNode.opacity = 0;
+            stepNode.runAction(cc.fadeIn(0.6));
         }
         this.fitScreen();
         //预加载场景
